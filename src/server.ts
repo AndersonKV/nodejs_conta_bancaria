@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express from 'express';
 import "./connection";
 
@@ -9,4 +12,5 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
-app.listen(3333);
+
+app.listen(process.env.PORT);

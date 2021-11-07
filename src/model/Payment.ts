@@ -1,26 +1,34 @@
 import { Schema, model, Document } from 'mongoose';
 
-interface PaymentInterface extends Document {
-    transaction_amount: string;
-    transaction_description: string;
+export interface PaymentInterface extends Document {
+    transaction_amount: number;
+    description_transaction: string;
     payment_method: string;
     card_number: string;
-    card_holder_name: string;
+    name_card_holder: string;
     card_expiration_date: string;
-    card_verification_code: string;
+    card_verification_code: number;
+    payment_date: string;
+    status: string;
+    fee: string;
 }
 
+
+
 const PaymentSchema: Schema = new Schema({
-    transaction_amount: { type: String, lowercase: true, requered: true },
-    transaction_description: { type: String, lowercase: true, requered: true },
+    status: { type: String, required: true },
+    fee: { type: String, required: true },
+    payment_date: { type: String, required: true },
+    transaction_amount: { type: Number, requered: true },
+    description_transaction: { type: String, lowercase: true, requered: true },
     payment_method: { type: String, lowercase: true, requered: true },
-    card_number: { type: String, lowercase: true, requered: true },
-    card_holder_name: { type: String, lowercase: true, requered: true },
+    card_number: { type: Number, requered: true },
+    name_card_holder: { type: String, lowercase: true, requered: true },
     card_expiration_date: { type: String, formatedDate: () => Math.floor(Date.now()) },
-    card_verification_code: { type: String, lowercase: true, requered: true },
+    card_verification_code: { type: Number, requered: true },
 })
 
-const Payment = model<PaymentInterface>("payment_pagarme", PaymentSchema);
+const Payment = model<PaymentInterface>("test_pagarme", PaymentSchema);
 
 export { Payment };
 // function formatedDate() {
