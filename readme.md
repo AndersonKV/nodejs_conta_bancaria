@@ -1,3 +1,10 @@
+
+
+post - "/api/v1/payment"</br>
+post - "/api/v1/user/payment"</br>
+get - "/api/v1/payment"</br>
+delete - "/api/v1/payment"</br>
+
 1. - O serviço deve processar transações, recebendo as seguintes informações:
 
 [x] - Valor da transação</br>
